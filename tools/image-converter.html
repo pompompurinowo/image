@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>图片转换器</title>
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--text:#1f2937;--muted:#6b7280;--line:#dbe3ef;--p:#5b7cff;--ok:#159447;--warn:#b7791f}*{box-sizing:border-box}body{margin:0;padding:28px;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:linear-gradient(135deg,#f2f6ff,#fbf8ff);min-height:100vh}.wrap{max-width:980px;margin:auto}h1{margin:0 0 6px}.sub{color:var(--muted);margin-bottom:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:0 0 16px;box-shadow:0 10px 28px #1f293712}.drop{border:2px dashed #b9c7f4;border-radius:16px;padding:38px 18px;text-align:center;background:#fafcff;cursor:pointer}.drop.drag{background:#eef3ff;border-color:var(--p)}.drop b{display:block;font-size:19px;margin-bottom:8px}.drop span,label,.meta,.cdn,.tip{color:var(--muted);font-size:13px}input[type=file]{display:none}.controls{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:end}label{display:block;margin-bottom:6px}select,input[type=number],input[type=password]{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff}.quality{display:flex;align-items:center;gap:8px}.quality input{width:100%}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}button{border:0;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:700;background:#eef2ff;color:#4052ad}.primary{background:var(--p);color:#fff}.success{background:#eaf8ef;color:#14783a}button:disabled{opacity:.45}.list{display:grid;gap:10px}.item{display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:13px;padding:10px}.thumb{width:50px;height:50px;object-fit:cover;border-radius:9px;background:#edf1f6}.name{font-weight:700;overflow:hidden;text-overflow:ellipsis}.meta{margin-top:4px}.cdn{margin-top:6px;word-break:break-all}.copy{font-size:12px;padding:5px 8px;margin-left:5px}.status{font-size:12px;font-weight:700;max-width:180px;text-align:right}.ok{color:var(--ok)}.empty{text-align:center;color:var(--muted);padding:18px}.tip{line-height:1.7}.tokenbox{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}.token-note{font-size:12px;color:var(--muted);margin-top:7px;line-height:1.6}.warn{color:var(--warn)}@media(max-width:800px){.controls{grid-template-columns:1fr 1fr}}@media(max-width:480px){body{padding:14px}.controls{grid-template-columns:1fr}.item{grid-template-columns:44px 1fr}.status{grid-column:2;text-align:left}.thumb{width:44px;height:44px}.tokenbox{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🖼️ 图片转换器</h1>
+<div class="sub">拖入图片 → 转换压缩 → 一键上传 GitHub → 自动得到 CDN 地址</div>
+
+<div class="card">
+  <div class="tokenbox">
+    <div>
+      <label>GitHub Token（需要 Contents 读写权限）</label>
+      <input id="token" type="password" autocomplete="off" placeholder="github_pat_... 或 ghp_...">
+    </div>
+    <button id="testToken">测试连接</button>
+  </div>
+  <div id="tokenStatus" class="token-note">Token 只在当前页面内存中使用，不保存、不写入仓库；刷新页面后会自动清空。</div>
+</div>
+
+<div class="card"><div class="drop" id="drop"><b>把图片拖到这里</b><span>或点击选择图片，可批量处理</span><input id="files" type="file" accept="image/*" multiple></div></div>
+<div class="card">
+<div class="controls">
+<div><label>输出格式</label><select id="format"><option value="image/webp">WebP（推荐）</option><option value="image/png">PNG</option><option value="image/jpeg">JPG</option></select></div>
+<div><label>最长边 px</label><input id="maxSide" type="number" value="2000" min="0" step="100"></div>
+<div><label>画质 <b id="qText">85</b></label><div class="quality"><input id="quality" type="range" min="40" max="100" value="85"></div></div>
+<div><label>文件名</label><select id="rename"><option value="safe">自动安全命名</option><option value="keep">保留原名</option></select></div>
+<div><label>上传目录</label><select id="folder"><option value="backgrounds">backgrounds · 背景</option><option value="avatars">avatars · 头像</option><option value="icons">icons · 图标</option><option value="illustrations">illustrations · 插画</option><option value="stickers">stickers · 贴纸</option></select></div>
+</div>
+<div class="actions"><button id="convert" class="primary" disabled>开始转换</button><button id="upload" class="success" disabled>上传全部到 GitHub</button><button id="download" disabled>仅下载到本地</button><button id="clear">清空</button></div>
+</div>
+<div class="card"><div id="list" class="list"><div class="empty">还没有图片～</div></div></div>
+<div class="card tip"><b>推荐：</b>壁纸、插画用 WebP + 85；透明图标可用 WebP 或 PNG。上传成功后 CDN 地址会直接可复制。<br><span class="warn">注意：</span>如果同目录已有同名文件，工具会自动覆盖更新。</div>
+</div>
+<script>
+const OWNER='lingwangshu018',REPO='image',BRANCH='main';
+const CDN=`https://cdn.jsdelivr.net/gh/${OWNER}/${REPO}@${BRANCH}/`;
+const API=`https://api.github.com/repos/${OWNER}/${REPO}`;
+const state=[],$=id=>document.getElementById(id),drop=$('drop'),files=$('files'),list=$('list');
+$('quality').oninput=e=>$('qText').textContent=e.target.value;
+drop.onclick=()=>files.click();drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag')};drop.ondragleave=()=>drop.classList.remove('drag');drop.ondrop=e=>{e.preventDefault();drop.classList.remove('drag');add([...e.dataTransfer.files])};files.onchange=e=>add([...e.target.files]);
+function add(arr){arr.filter(f=>f.type.startsWith('image/')).forEach(file=>state.push({file,preview:URL.createObjectURL(file),blob:null,outName:'',cdn:'',status:'待转换',uploaded:false}));render()}
+function bytes(n){return n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB'}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function safe(s){return s.normalize('NFKD').replace(/\.[^.]+$/,'').replace(/[^\w\u4e00-\u9fa5-]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'image'}
+function ext(t){return t==='image/png'?'png':t==='image/jpeg'?'jpg':'webp'}
+function render(){if(!state.length){list.innerHTML='<div class="empty">还没有图片～</div>';$('convert').disabled=true;$('download').disabled=true;$('upload').disabled=true;return}$('convert').disabled=false;$('download').disabled=!state.some(x=>x.blob);$('upload').disabled=!state.some(x=>x.blob);list.innerHTML='';state.forEach((x,i)=>{const el=document.createElement('div');el.className='item';el.innerHTML=`<img class="thumb" src="${x.preview}"><div><div class="name">${esc(x.file.name)}</div><div class="meta">${bytes(x.file.size)}${x.blob?' → '+esc(x.outName)+' · '+bytes(x.blob.size):''}</div>${x.cdn?`<div class="cdn">${esc(x.cdn)} <button class="copy" data-i="${i}">复制 CDN</button></div>`:''}</div><div class="status ${x.uploaded?'ok':''}">${esc(x.status)}</div>`;list.appendChild(el)});list.querySelectorAll('.copy').forEach(b=>b.onclick=()=>navigator.clipboard.writeText(state[+b.dataset.i].cdn).then(()=>{b.textContent='已复制 ✓';setTimeout(()=>b.textContent='复制 CDN',1000)}))}
+async function image(file){const u=URL.createObjectURL(file),img=new Image();img.src=u;await img.decode();URL.revokeObjectURL(u);return img}
+async function one(x){const type=$('format').value,q=+$('quality').value/100,max=Math.max(0,+$('maxSide').value||0),img=await image(x.file);let w=img.naturalWidth,h=img.naturalHeight;if(max&&Math.max(w,h)>max){const s=max/Math.max(w,h);w=Math.round(w*s);h=Math.round(h*s)}const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');if(type==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h)}ctx.drawImage(img,0,0,w,h);x.blob=await new Promise((r,j)=>c.toBlob(b=>b?r(b):j(Error('转换失败')),type,q));const old=x.file.name.replace(/\.[^.]+$/,''),base=$('rename').value==='safe'?safe(old):old;x.outName=base+'.'+ext(type);x.cdn=CDN+$('folder').value+'/'+encodeURIComponent(x.outName);x.status='已转换';x.uploaded=false}
+$('convert').onclick=async()=>{$('convert').disabled=true;for(const x of state){x.status='转换中…';render();try{await one(x)}catch(e){x.status='失败：'+e.message}render()}$('convert').disabled=false};
+function save(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+$('download').onclick=async()=>{for(const x of state.filter(x=>x.blob)){save(x.blob,x.outName);await new Promise(r=>setTimeout(r,150))}};
+$('clear').onclick=()=>{state.forEach(x=>URL.revokeObjectURL(x.preview));state.length=0;files.value='';render()};
+function headers(){const token=$('token').value.trim();if(!token)throw Error('请先填写 GitHub Token');return {'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'}}
+async function blobToBase64(blob){const buf=await blob.arrayBuffer();let binary='',bytes=new Uint8Array(buf),chunk=0x8000;for(let i=0;i<bytes.length;i+=chunk)binary+=String.fromCharCode(...bytes.subarray(i,i+chunk));return btoa(binary)}
+async function getExistingSha(path){const r=await fetch(`${API}/contents/${path.split('/').map(encodeURIComponent).join('/')}?ref=${BRANCH}`,{headers:headers()});if(r.status===404)return null;if(!r.ok){const d=await r.json().catch(()=>({}));throw Error(d.message||`读取文件失败 (${r.status})`)}const d=await r.json();return d.sha||null}
+async function uploadOne(x){const folder=$('folder').value,path=`${folder}/${x.outName}`;x.cdn=CDN+folder+'/'+encodeURIComponent(x.outName);x.status='检查同名文件…';render();const sha=await getExistingSha(path);x.status='上传中…';render();const body={message:`upload: ${path}`,content:await blobToBase64(x.blob),branch:BRANCH};if(sha)body.sha=sha;const r=await fetch(`${API}/contents/${path.split('/').map(encodeURIComponent).join('/')}`,{method:'PUT',headers:headers(),body:JSON.stringify(body)});if(!r.ok){const d=await r.json().catch(()=>({}));throw Error(d.message||`上传失败 (${r.status})`)}x.uploaded=true;x.status='已上传 ✓'}
+$('upload').onclick=async()=>{try{headers()}catch(e){alert(e.message);return}$('upload').disabled=true;for(const x of state.filter(x=>x.blob)){try{await uploadOne(x)}catch(e){x.uploaded=false;x.status='上传失败：'+e.message}render()}$('upload').disabled=false};
+$('testToken').onclick=async()=>{const s=$('tokenStatus');try{s.textContent='正在测试连接…';const r=await fetch(API,{headers:headers()});if(!r.ok){const d=await r.json().catch(()=>({}));throw Error(d.message||`连接失败 (${r.status})`)}s.textContent='连接成功 ✓ 可以上传到 lingwangshu018/image';s.className='token-note ok'}catch(e){s.textContent='连接失败：'+e.message;s.className='token-note warn'}};
+</script>
+</body>
+</html>
