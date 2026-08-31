@@ -47,7 +47,7 @@ image/
 2. 打开 Personal access tokens → Fine-grained tokens。
 3. 新建 Token。
 4. Repository access 选择 **Only select repositories**。
-5. 只选择 `lingwangshu018/image`。
+5. 只选择 `pompompurinowo/image`。
 6. Repository permissions 中把 **Contents** 设置为 **Read and write**。
 7. 创建后复制 Token。
 
