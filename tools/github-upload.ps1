@@ -11,7 +11,7 @@ param(
 
     [switch]$Overwrite,
 
-    [string]$Owner = 'lingwangshu018',
+    [string]$Owner = 'pompompurinowo',
 
     [string]$Repository = 'image',
 
