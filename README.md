@@ -15,7 +15,7 @@ GitHub 仓库负责存储，GitHub Contents API 负责上传，jsDelivr 提供�
 打开：
 
 ```text
-https://lingwangshu018.github.io/image/
+https://pompompurinowo.github.io/image/
 ```
 
 网页工具可以批量转换、压缩和上传图片，并生成四种地址：
@@ -52,7 +52,7 @@ https://lingwangshu018.github.io/image/
 
 1. 打开 GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens。
 2. Repository access 选择 **Only select repositories**。
-3. 只选择 `lingwangshu018/image`。
+3. 只选择 `pompompurinowo/image`。
 4. Repository permissions 中只把 **Contents** 设置为 **Read and write**。
 5. 设置合理的过期时间并复制 Token。
 
@@ -89,25 +89,25 @@ backgrounds/night-beach.jpg
 默认 jsDelivr 地址：
 
 ```text
-https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/backgrounds/night-beach.jpg
+https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/backgrounds/night-beach.jpg
 ```
 
 GitHub Raw 备用：
 
 ```text
-https://raw.githubusercontent.com/lingwangshu018/image/main/backgrounds/night-beach.jpg
+https://raw.githubusercontent.com/pompompurinowo/image/main/backgrounds/night-beach.jpg
 ```
 
 GitHub Pages 备用：
 
 ```text
-https://lingwangshu018.github.io/image/backgrounds/night-beach.jpg
+https://pompompurinowo.github.io/image/backgrounds/night-beach.jpg
 ```
 
 不要使用下面这种 GitHub 页面地址作为图片直链：
 
 ```text
-https://github.com/lingwangshu018/image/blob/main/backgrounds/night-beach.jpg
+https://github.com/pompompurinowo/image/blob/main/backgrounds/night-beach.jpg
 ```
 
 `blob` 地址返回的是 HTML 页面，部分软件无法读取。`raw.gitcode.com` 可作为国内可选镜像，但它的同步和响应不由本仓库控制，不作为默认地址。
@@ -117,27 +117,27 @@ https://github.com/lingwangshu018/image/blob/main/backgrounds/night-beach.jpg
 Markdown：
 
 ```markdown
-![夜景](https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/backgrounds/night-beach.jpg)
+![夜景](https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/backgrounds/night-beach.jpg)
 ```
 
 HTML：
 
 ```html
-<img src="https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/backgrounds/night-beach.jpg" alt="夜景">
+<img src="https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/backgrounds/night-beach.jpg" alt="夜景">
 ```
 
 CSS：
 
 ```css
 .phone-wallpaper {
-  background-image: url("https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/backgrounds/night-beach.jpg");
+  background-image: url("https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/backgrounds/night-beach.jpg");
 }
 ```
 
 BBCode：
 
 ```text
-[img]https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/backgrounds/night-beach.jpg[/img]
+[img]https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/backgrounds/night-beach.jpg[/img]
 ```
 
 ## PowerShell 本地上传
@@ -177,8 +177,8 @@ Windows 本地客户端位于 `tools/github-upload.ps1`。它会读取 `GITHUB_T
 GitHub-only 模式的真实上传接口是 GitHub Contents API，不存在安全的匿名 `/api/upload`：
 
 ```text
-GET https://api.github.com/repos/lingwangshu018/image/contents/{path}?ref=main
-PUT https://api.github.com/repos/lingwangshu018/image/contents/{path}
+GET https://api.github.com/repos/pompompurinowo/image/contents/{path}?ref=main
+PUT https://api.github.com/repos/pompompurinowo/image/contents/{path}
 ```
 
 请求头：
