@@ -5,7 +5,8 @@
 图片上传到这里以后，可以通过 **jsDelivr CDN** 生成公开访问链接。
 
 #图使用
-本网站：https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/
+
+本网站：https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/接文件夹/文件名
 
 ## 直接打开图片转换器
 
