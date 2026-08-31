@@ -5,15 +5,14 @@
 图片上传到这里以后，可以通过 **jsDelivr CDN** 生成公开访问链接。
 
 #图使用
-国内网站：https://raw.gitcode.com/lingwangshu018/image/raw/main/
-本网站：https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/
+本网站：https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/
 
 ## 直接打开图片转换器
 
 GitHub Pages：
 
 ```text
-https://lingwangshu018.github.io/image/
+https://pompompurinowo.github.io/image/
 ```
 
 打开后会直接进入图片转换器。
@@ -76,7 +75,7 @@ image/
 
 操作：
 
-1. 打开 `https://lingwangshu018.github.io/image/`。
+1. 打开 `https://pompompurinowo.github.io/image/`。
 2. 填入 GitHub Token，并点击 **测试连接**。
 3. 把图片拖进转换器。
 4. 选择输出格式、尺寸、画质。
@@ -96,7 +95,7 @@ image/
 本仓库 jsDelivr CDN 基础地址：
 
 ```text
-https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/
+https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/
 ```
 
 例如：
@@ -108,7 +107,7 @@ backgrounds/night-beach.webp
 对应：
 
 ```text
-https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/backgrounds/night-beach.webp
+https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/backgrounds/night-beach.webp
 ```
 
 又例如：
@@ -120,7 +119,7 @@ icons/wechat.webp
 对应：
 
 ```text
-https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/icons/wechat.webp
+https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/icons/wechat.webp
 ```
 
 转换器会自动生成这些地址，不需要手动拼接。
@@ -132,7 +131,7 @@ https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/icons/wechat.webp
 推荐只写一次基础地址：
 
 ```js
-const IMAGE_CDN = 'https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/';
+const IMAGE_CDN = 'https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/';
 ```
 
 然后：
@@ -145,14 +144,14 @@ const wechatIcon = IMAGE_CDN + 'icons/wechat.webp';
 HTML：
 
 ```html
-<img src="https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/icons/wechat.webp" alt="微信图标">
+<img src="https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/icons/wechat.webp" alt="微信图标">
 ```
 
 CSS：
 
 ```css
 .phone-wallpaper {
-  background-image: url('https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/backgrounds/night-beach.webp');
+  background-image: url('https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/backgrounds/night-beach.webp');
 }
 ```
 
