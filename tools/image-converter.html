@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>图片与字体上传工具</title>
 <style>
-:root{--bg:#f5f7fa;--surface:#fff;--text:#17202a;--muted:#667085;--line:#d7dde5;--primary:#2457d6;--primary-soft:#eaf0ff;--ok:#167647;--ok-soft:#eaf7f0;--warn:#a15c00;--danger:#b42318}*{box-sizing:border-box}body{margin:0;padding:24px;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);min-height:100vh;letter-spacing:0}.wrap{max-width:1080px;margin:auto}h1{margin:0 0 6px;font-size:30px}.sub{color:var(--muted);margin-bottom:20px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px;margin:0 0 14px}.drop{border:2px dashed #aebbd0;border-radius:8px;padding:36px 18px;text-align:center;background:#fafbfc;cursor:pointer}.drop.drag{background:var(--primary-soft);border-color:var(--primary)}.drop b{display:block;font-size:18px;margin-bottom:7px}.drop span,label,.meta,.url,.tip,.token-note{color:var(--muted);font-size:13px}input[type=file]{display:none}.controls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:end}label{display:block;margin-bottom:6px}select,input[type=number],input[type=password]{width:100%;min-height:40px;border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:#fff;color:var(--text)}.quality{display:flex;align-items:center;min-height:40px}.quality input{width:100%}.actions,.copy-actions,.token-actions{display:flex;gap:8px;flex-wrap:wrap}.actions,.copy-actions{margin-top:14px}button{border:1px solid transparent;border-radius:6px;min-height:38px;padding:8px 12px;cursor:pointer;font-weight:650;background:var(--primary-soft);color:#2445a5}button:hover:not(:disabled){filter:brightness(.97)}button.primary{background:var(--primary);color:#fff}.success{background:var(--ok-soft);color:var(--ok)}button:disabled{opacity:.45;cursor:not-allowed}.list{display:grid;gap:10px}.item{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;align-items:start;border:1px solid var(--line);border-radius:8px;padding:12px}.thumb{width:58px;height:58px;object-fit:cover;border-radius:6px;background:#edf1f6}.font-result{grid-column:1 / -1;display:grid;gap:12px}.font-url-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.font-url{font-size:16px;color:var(--primary);word-break:break-all;text-decoration:underline;text-underline-offset:4px}.font-preview{min-height:150px;border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.65;overflow-wrap:anywhere;background:#fff}.font-preview.loading{color:var(--muted);font-family:inherit!important;font-size:14px!important}.font-size-control{display:flex;align-items:center;gap:10px}.font-size-control label{margin:0;white-space:nowrap}.font-size-control input{width:100%}.name{font-weight:700;overflow-wrap:anywhere}.meta{margin-top:4px}.links{display:grid;gap:5px;margin-top:9px}.link-row{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:8px;align-items:center}.link-label{font-size:12px;font-weight:700;color:#475467}.url{word-break:break-all}.copy{font-size:12px;min-height:30px;padding:4px 8px}.status{font-size:12px;font-weight:700;max-width:210px;text-align:right;line-height:1.5}.ok{color:var(--ok)}.warn{color:var(--warn)}.error{color:var(--danger)}.empty{text-align:center;color:var(--muted);padding:18px}.panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.panel-title h2{font-size:18px;margin:0}.panel-title button{min-height:32px;padding:5px 9px}.tip{line-height:1.75}.tokenbox{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end}.token-note{margin-top:7px;line-height:1.6}.notice{border-left:3px solid var(--warn);padding-left:12px}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:850px){.controls{grid-template-columns:1fr 1fr}.item{grid-template-columns:50px minmax(0,1fr)}.thumb{width:50px;height:50px}.status{grid-column:2;text-align:left;max-width:none}}@media(max-width:560px){body{padding:12px}.controls{grid-template-columns:1fr}.tokenbox{grid-template-columns:1fr}.link-row,.font-url-row{grid-template-columns:1fr auto}.link-label{grid-column:1 / -1}.item{grid-template-columns:44px minmax(0,1fr)}.thumb{width:44px;height:44px}.copy-actions button{flex:1 1 calc(50% - 8px)}.font-preview{min-height:120px;padding:16px}}
+:root{--bg:#f5f7fa;--surface:#fff;--text:#17202a;--muted:#667085;--line:#d7dde5;--primary:#2457d6;--primary-soft:#eaf0ff;--ok:#167647;--ok-soft:#eaf7f0;--warn:#a15c00;--danger:#b42318}*{box-sizing:border-box}body{margin:0;padding:24px;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);min-height:100vh;letter-spacing:0}.wrap{max-width:1080px;margin:auto}h1{margin:0 0 6px;font-size:30px}.sub{color:var(--muted);margin-bottom:20px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px;margin:0 0 14px}.drop{border:2px dashed #aebbd0;border-radius:8px;padding:36px 18px;text-align:center;background:#fafbfc;cursor:pointer}.drop.drag{background:var(--primary-soft);border-color:var(--primary)}.drop b{display:block;font-size:18px;margin-bottom:7px}.drop span,label,.meta,.url,.tip,.token-note{color:var(--muted);font-size:13px}input[type=file]{display:none}.controls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:end}label{display:block;margin-bottom:6px}select,input[type=number],input[type=password]{width:100%;min-height:40px;border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:#fff;color:var(--text)}.quality{display:flex;align-items:center;min-height:40px}.quality input{width:100%}.actions,.copy-actions,.token-actions{display:flex;gap:8px;flex-wrap:wrap}.actions,.copy-actions{margin-top:14px}button{border:1px solid transparent;border-radius:6px;min-height:38px;padding:8px 12px;cursor:pointer;font-weight:650;background:var(--primary-soft);color:#2445a5}button:hover:not(:disabled){filter:brightness(.97)}button.primary{background:var(--primary);color:#fff}.success{background:var(--ok-soft);color:var(--ok)}button:disabled{opacity:.45;cursor:not-allowed}.list{display:grid;gap:10px}.item{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;align-items:start;border:1px solid var(--line);border-radius:8px;padding:12px}.thumb{width:58px;height:58px;object-fit:cover;border-radius:6px;background:#edf1f6}.font-result{grid-column:1 / -1;display:grid;gap:12px}.font-url-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.font-url{font-size:16px;color:var(--primary);word-break:break-all;text-decoration:underline;text-underline-offset:4px}.font-preview{min-height:150px;border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.65;overflow-wrap:anywhere;background:#fff}.font-preview.loading{color:var(--muted);font-family:inherit!important;font-size:14px!important}.font-size-control{display:flex;align-items:center;gap:10px}.font-size-control label{margin:0;white-space:nowrap}.font-size-control input{width:100%}.name{font-weight:700;overflow-wrap:anywhere}.meta{margin-top:4px}.links{display:grid;gap:5px;margin-top:9px}.link-row{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:8px;align-items:center}.link-label{font-size:12px;font-weight:700;color:#475467}.url{word-break:break-all}.copy{font-size:12px;min-height:30px;padding:4px 8px}.status{font-size:12px;font-weight:700;max-width:210px;text-align:right;line-height:1.5}.ok{color:var(--ok)}.warn{color:var(--warn)}.error{color:var(--danger)}.empty{text-align:center;color:var(--muted);padding:18px}.panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.panel-title h2{font-size:18px;margin:0}.panel-title button{min-height:32px;padding:5px 9px}.tip{line-height:1.75}.tokenbox{display:grid;gap:12px}.config-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px}.token-note{margin-top:7px;line-height:1.6}.notice{border-left:3px solid var(--warn);padding-left:12px}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:850px){.controls{grid-template-columns:1fr 1fr}.config-grid{grid-template-columns:1fr 1fr}.item{grid-template-columns:50px minmax(0,1fr)}.thumb{width:50px;height:50px}.status{grid-column:2;text-align:left;max-width:none}}@media(max-width:560px){body{padding:12px}.controls,.config-grid{grid-template-columns:1fr}.tokenbox{grid-template-columns:1fr}.link-row,.font-url-row{grid-template-columns:1fr auto}.link-label{grid-column:1 / -1}.item{grid-template-columns:44px minmax(0,1fr)}.thumb{width:44px;height:44px}.copy-actions button{flex:1 1 calc(50% - 8px)}.font-preview{min-height:120px;padding:16px}}
 </style>
 </head>
 <body>
@@ -15,17 +15,31 @@
 
 <section class="panel">
   <div class="tokenbox">
-    <div>
-      <label for="token">GitHub Token（仅需本仓库 Contents 读写权限）</label>
-      <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_... 或 ghp_...">
+    <div class="config-grid">
+      <div>
+        <label for="token">GitHub Token（需要仓库 Contents 读写权限）</label>
+        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_... 或 ghp_...">
+      </div>
+      <div>
+        <label for="owner">GitHub 用户名 / 组织 (Owner)</label>
+        <input id="owner" type="text" autocomplete="off" spellcheck="false" placeholder="例如 pompompurinowo">
+      </div>
+      <div>
+        <label for="repo">仓库名 (Repo)</label>
+        <input id="repo" type="text" autocomplete="off" spellcheck="false" placeholder="例如 image 或 my-image-bed">
+      </div>
+      <div>
+        <label for="branch">分支名 (Branch)</label>
+        <input id="branch" type="text" autocomplete="off" spellcheck="false" placeholder="main" value="main">
+      </div>
     </div>
     <div class="token-actions">
-      <button id="saveToken" class="success" type="button">保存 Token</button>
-      <button id="removeToken" type="button">删除已保存</button>
-      <button id="testToken" type="button">测试连接</button>
+      <button id="saveToken" class="success" type="button">保存配置</button>
+      <button id="removeToken" type="button">删除已保存配置</button>
+      <button id="testToken" type="button">测试连接并自动识别用户</button>
     </div>
   </div>
-  <div id="tokenStatus" class="token-note">点击“保存 Token”后会保存在当前浏览器本地，只发送到 api.github.com。</div>
+  <div id="tokenStatus" class="token-note">点击“保存配置”后会保存在当前浏览器本地，只发送到 api.github.com。</div>
 </section>
 
 <section class="panel">
@@ -55,17 +69,41 @@
 </main>
 <script>
 'use strict';
-const OWNER='lingwangshu018',REPO='image',BRANCH='main',MAX_UPLOAD=20*1024*1024,TOKEN_STORAGE_KEY='github-image-uploader-token',HISTORY_STORAGE_KEY='github-image-uploader-history',MAX_HISTORY=100;
+const DEFAULT_OWNER='lingwangshu018',DEFAULT_REPO='imagebed',DEFAULT_BRANCH='main',MAX_UPLOAD=20*1024*1024;
+const CONFIG_STORAGE_KEY='github-image-uploader-config',HISTORY_STORAGE_KEY='github-image-uploader-history',MAX_HISTORY=100;
 const FONT_TYPES={ttf:{folder:'front/ttf',format:'truetype'},otf:{folder:'front/otf',format:'opentype'},woff:{folder:'front/woff',format:'woff'},woff2:{folder:'front/woff2',format:'woff2'}};
-const API=`https://api.github.com/repos/${OWNER}/${REPO}`;
+
+function getConfig(){
+  const token=$('token').value.trim();
+  const owner=$('owner').value.trim()||DEFAULT_OWNER;
+  const repo=$('repo').value.trim()||DEFAULT_REPO;
+  const branch=$('branch').value.trim()||DEFAULT_BRANCH;
+  return {token,owner,repo,branch};
+}
+
+function getApiUrl(){
+  const cfg=getConfig();
+  return `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`;
+}
+
 const state=[],$=id=>document.getElementById(id),drop=$('drop'),files=$('files'),list=$('list'),historyList=$('history');
 let history=[];
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 
 try{
-  const savedToken=localStorage.getItem(TOKEN_STORAGE_KEY);
-  if(savedToken){$('token').value=savedToken;$('tokenStatus').textContent='已从当前浏览器加载保存的 Token。';$('tokenStatus').className='token-note ok'}
-}catch{$('tokenStatus').textContent='浏览器禁止本地存储，Token 无法自动保存。';$('tokenStatus').className='token-note warn'}
+  const savedCfg=JSON.parse(localStorage.getItem(CONFIG_STORAGE_KEY)||'{}');
+  if(savedCfg.token)$('token').value=savedCfg.token;
+  if(savedCfg.owner)$('owner').value=savedCfg.owner;
+  if(savedCfg.repo)$('repo').value=savedCfg.repo;
+  if(savedCfg.branch)$('branch').value=savedCfg.branch;
+  if(savedCfg.token||savedCfg.owner||savedCfg.repo){
+    $('tokenStatus').textContent='已从当前浏览器加载保存的配置。';
+    $('tokenStatus').className='token-note ok';
+  }
+}catch{
+  $('tokenStatus').textContent='浏览器禁止本地存储，配置无法自动保存。';
+  $('tokenStatus').className='token-note warn';
+}
 try{
   const savedHistory=JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)||'[]');
   if(Array.isArray(savedHistory))history=savedHistory.filter(x=>x&&x.path&&x.links).slice(0,MAX_HISTORY);
@@ -96,8 +134,9 @@ function uniqueBase(file,index){const stem=asciiSafe(file.name),stamp=new Date()
 function extension(type){return type==='image/png'?'png':type==='image/jpeg'?'jpg':'webp'}
 function encodePath(path){return path.split('/').map(encodeURIComponent).join('/')}
 function publicLinks(path,commit=''){
-  const encoded=encodePath(path),stable=commit?`https://cdn.jsdelivr.net/gh/${OWNER}/${REPO}@${commit}/${encoded}`:'';
-  return {main:`https://cdn.jsdelivr.net/gh/${OWNER}/${REPO}@${BRANCH}/${encoded}`,stable,raw:`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${encoded}`,pages:`https://${OWNER}.github.io/${REPO}/${encoded}`};
+  const cfg=getConfig();
+  const encoded=encodePath(path),stable=commit?`https://cdn.jsdelivr.net/gh/${cfg.owner}/${cfg.repo}@${commit}/${encoded}`:'';
+  return {main:`https://cdn.jsdelivr.net/gh/${cfg.owner}/${cfg.repo}@${cfg.branch}/${encoded}`,stable,raw:`https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}/${encoded}`,pages:`https://${cfg.owner}.github.io/${cfg.repo}/${encoded}`};
 }
 function fontCss(x){
   const family=(x.outName||'font').replace(/\.[^.]+$/,'').replace(/["\\]/g,'').trim()||'font',ext=x.fontExt||fileExtension(x.outName),format=FONT_TYPES[ext]?.format||ext;
@@ -209,8 +248,20 @@ function apiError(status,message=''){
 }
 async function request(url,options={}){let response;try{response=await fetch(url,options)}catch{throw Error('无法连接 GitHub API，请检查网络')};const data=await response.json().catch(()=>({}));if(!response.ok)throw Object.assign(Error(apiError(response.status,data.message)),{status:response.status});return data}
 async function blobToBase64(blob){const buf=await blob.arrayBuffer(),bytes=new Uint8Array(buf);let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(binary)}
-async function getExistingSha(path){const response=await fetch(`${API}/contents/${encodePath(path)}?ref=${encodeURIComponent(BRANCH)}`,{headers:headers()}).catch(()=>{throw Error('无法连接 GitHub API，请检查网络')});if(response.status===404)return null;const data=await response.json().catch(()=>({}));if(!response.ok)throw Object.assign(Error(apiError(response.status,data.message)),{status:response.status});return data.sha||null}
-async function putFile(x,sha){const body={message:`upload: ${x.path}`,content:await blobToBase64(x.blob),branch:BRANCH};if(sha)body.sha=sha;return request(`${API}/contents/${encodePath(x.path)}`,{method:'PUT',headers:headers(),body:JSON.stringify(body)})}
+async function getExistingSha(path){
+  const cfg=getConfig();
+  const response=await fetch(`${getApiUrl()}/contents/${encodePath(path)}?ref=${encodeURIComponent(cfg.branch)}`,{headers:headers()}).catch(()=>{throw Error('无法连接 GitHub API，请检查网络')});
+  if(response.status===404)return null;
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok)throw Object.assign(Error(apiError(response.status,data.message)),{status:response.status});
+  return data.sha||null;
+}
+async function putFile(x,sha){
+  const cfg=getConfig();
+  const body={message:`upload: ${x.path}`,content:await blobToBase64(x.blob),branch:cfg.branch};
+  if(sha)body.sha=sha;
+  return request(`${getApiUrl()}/contents/${encodePath(x.path)}`,{method:'PUT',headers:headers(),body:JSON.stringify(body)});
+}
 async function verifyLink(url){
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
   try{const response=await fetch(`${url}${url.includes('?')?'&':'?'}verify=${Date.now()}`,{cache:'no-store',signal:controller.signal});return response.ok} catch{return false}finally{clearTimeout(timer)}
@@ -223,10 +274,10 @@ async function uploadOne(x){
   addHistory(x);
 }
 $('upload').onclick=async()=>{try{headers()}catch(error){alert(error.message);return}$('upload').disabled=true;for(const x of state.filter(x=>x.blob)){try{await uploadOne(x)}catch(error){x.uploaded=false;x.status=`上传失败：${error.message}`;x.statusClass='error'}render()}$('upload').disabled=false};
-$('saveToken').onclick=()=>{const status=$('tokenStatus'),token=$('token').value.trim();if(!token){status.textContent='请先填写 GitHub Token。';status.className='token-note error';return}try{localStorage.setItem(TOKEN_STORAGE_KEY,token);status.textContent='Token 已保存在当前浏览器本地。';status.className='token-note ok'}catch{status.textContent='保存失败：浏览器禁止本地存储。';status.className='token-note error'}};
-$('removeToken').onclick=()=>{const status=$('tokenStatus');try{localStorage.removeItem(TOKEN_STORAGE_KEY);$('token').value='';status.textContent='已删除本地保存的 Token。';status.className='token-note ok'}catch{status.textContent='删除失败：浏览器禁止访问本地存储。';status.className='token-note error'}};
+$('saveToken').onclick=()=>{const status=$('tokenStatus'),cfg=getConfig();if(!cfg.token){status.textContent='请先填写 GitHub Token。';status.className='token-note error';return}try{localStorage.setItem(CONFIG_STORAGE_KEY,JSON.stringify(cfg));status.textContent='配置已保存在当前浏览器本地。';status.className='token-note ok'}catch{status.textContent='保存失败：浏览器禁止本地存储。';status.className='token-note error'}};
+$('removeToken').onclick=()=>{const status=$('tokenStatus');try{localStorage.removeItem(CONFIG_STORAGE_KEY);$('token').value='';$('owner').value='';$('repo').value='';$('branch').value='main';status.textContent='已删除本地保存的 Token。';status.className='token-note ok'}catch{status.textContent='删除失败：浏览器禁止访问本地存储。';status.className='token-note error'}};
 $('clearHistory').onclick=()=>{if(!history.length||!confirm('确定清空所有本地上传历史吗？'))return;history=[];persistHistory();renderHistory()};
-$('testToken').onclick=async()=>{const status=$('tokenStatus');try{status.textContent='正在测试连接';status.className='token-note';const data=await request(API,{headers:headers()});if(!data.permissions?.push)status.textContent='连接成功，但 API 未确认写入权限；请确认 Contents 为 Read and write';else status.textContent=`连接成功，可以上传到 ${OWNER}/${REPO}`;status.className='token-note ok'}catch(error){status.textContent=`连接失败：${error.message}`;status.className='token-note error'}};
+$('testToken').onclick=async()=>{const status=$('tokenStatus');try{status.textContent='正在测试连接';status.className='token-note';const cfg=getConfig();try{const u=await request('https://api.github.com/user',{headers:headers()});if(u&&u.login&&!$('owner').value.trim())$('owner').value=u.login}catch{}const data=await request(getApiUrl(),{headers:headers()});const owner=$('owner').value.trim()||DEFAULT_OWNER,repo=$('repo').value.trim()||DEFAULT_REPO;if(!data.permissions?.push)status.textContent='连接成功，但 API 未确认写入权限；请确认 Contents 为 Read and write';else status.textContent=`连接成功，可以上传到 ${owner}/${repo}`;status.className='token-note ok'}catch(error){status.textContent=`连接失败：${error.message}`;status.className='token-note error'}};
 renderHistory();
 </script>
 </body>

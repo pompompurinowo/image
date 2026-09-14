@@ -4,7 +4,7 @@
 
 ## 1. 设置 Token
 
-创建只允许访问 `lingwangshu018/image`、仅具有 **Contents: Read and write** 权限的 Fine-grained personal access token。
+创建只允许访问 `pompompurinowo/image`、仅具有 **Contents: Read and write** 权限的 Fine-grained personal access token。
 
 在 Windows 用户环境变量中保存：
 
@@ -58,7 +58,7 @@ ShareX Custom Uploader 本身通常不能可靠完成 GitHub Contents API 所需
 默认输出：
 
 ```text
-https://cdn.jsdelivr.net/gh/lingwangshu018/image@main/illustrations/example.png
+https://cdn.jsdelivr.net/gh/pompompurinowo/image@main/illustrations/example.png
 ```
 
 上传后立即访问若尚未刷新，可从 `github-upload.ps1` 的 JSON 中使用 `rawUrl`。需要永久锁定某次内容时使用 `stableUrl`（带 commit SHA）。
