@@ -47,24 +47,22 @@ https://pompompurinowo.github.io/image/
 - 现代网页且重视体积：WebP。
 - 默认使用唯一英文名，避免中文路径兼容问题和 CDN 旧缓存。
 
-## 第一次使用：创建 GitHub Token
+## 第一次使用：创建 GitHub 仓库与 Token
 
+### 1. 创建属于你自己的公开仓库（图床）
+1. 在 GitHub 上新建一个仓库（例如叫 `my-image-bed` 或 `image`）。
+2. **务必设置为 Public（公开）**，以便 jsDelivr 和网络可以直接访问图片直链。
+
+### 2. 创建 Fine-grained Token
 上传者需要自己的 **Fine-grained personal access token**：
 
 1. 打开 GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens。
 2. Repository access 选择 **Only select repositories**。
-3. 只选择 `pompompurinowo/image`。
+3. 选择你刚刚新建的图床仓库（如 `my-image-bed`）。
 4. Repository permissions 中只把 **Contents** 设置为 **Read and write**。
 5. 设置合理的过期时间并复制 Token。
 
-网页中的 Token：
-
-- 只保存在当前页面内存中。
-- 不写入 `localStorage`、`sessionStorage`、Cookie、URL 或仓库。
-- 只发送到 `https://api.github.com`。
-- 刷新或关闭页面后清空。
-
-请只在官方 GitHub Pages HTTPS 地址输入 Token。Token 相当于仓库写入钥匙；泄露后立即在 GitHub 撤销并重新创建。
+网页支持设置自定义 Owner（用户名/组织名）、Repo（仓库名）、Branch（分支名）及 Token，并支持在当前浏览器保存配置。建议只在官方/信任的静态页面输入 Token。Token 泄露后随时可撤销。
 
 ## 网页上传流程
 
